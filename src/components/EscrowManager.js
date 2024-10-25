@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ethers } from "ethers";
+import { parseEther, formatUnits } from "ethers";
 import { getGAEHEscrowContract, getFtsoV2FeedConsumerContract } from "../utils/contracts";
 
 const EscrowManager = ({ account }) => {
@@ -13,7 +13,7 @@ const EscrowManager = ({ account }) => {
 
     const contract = getGAEHEscrowContract();
     try {
-      const tx = await contract.createEscrow(seller, ethers.utils.parseEther(amount), 5);
+      const tx = await contract.createEscrow(seller, parseEther(amount), 5);
       await tx.wait();
       alert("Escrow Created Successfully!");
     } catch (error) {
@@ -50,16 +50,16 @@ const EscrowManager = ({ account }) => {
     }
   };
 
-  const getCurrentPrice = async () => {
+ /* const getCurrentPrice = async () => {
     const contract = getFtsoV2FeedConsumerContract();
     try {
-      const [latestPrice] = await contract.getCurrentPrice();
-      setPrice(ethers.utils.formatUnits(latestPrice, 2));
+      const latestPrice = await contract.getCurrentPrice(); // getCurrentPrice returns a single value in ethers v6
+      setPrice(formatUnits(latestPrice, 2));
     } catch (error) {
       console.error(error);
       alert("Failed to fetch the latest price. Please try again.");
     }
-  };
+  };*/
 
   return (
     <div>
@@ -88,10 +88,7 @@ const EscrowManager = ({ account }) => {
         <button onClick={finalizeEscrow}>Finalize Escrow</button>
       </div>
 
-      <div>
-        <button onClick={getCurrentPrice}>Get Current Price</button>
-        {price && <p>Current Price: {price} USD</p>}
-      </div>
+    
     </div>
   );
 };
