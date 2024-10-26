@@ -1,3 +1,4 @@
+/*
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -43,7 +44,7 @@ contract GAEHEscrow is Ownable {
             seller: seller,
             amount: amount,
             status: EscrowStatus.Initialized,
-            lastPriceUpdate: block.timestamp
+            lastPriceUpdate: block.timestamp,
             adjustedPrice: 0 //adjust price change
         });
 
@@ -92,3 +93,5 @@ contract GAEHEscrow is Ownable {
         emit EscrowCancelled(escrowId);
     }
 }
+
+*/

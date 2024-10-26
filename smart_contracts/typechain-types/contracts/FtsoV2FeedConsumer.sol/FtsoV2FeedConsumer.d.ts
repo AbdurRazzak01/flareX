@@ -7,19 +7,68 @@ import { EventData, PastEventOptions } from "web3-eth-contract";
 
 export interface FtsoV2FeedConsumerContract
   extends Truffle.Contract<FtsoV2FeedConsumerInstance> {
-  "new"(
-    _ftsoAddress: string,
-    meta?: Truffle.TransactionDetails
-  ): Promise<FtsoV2FeedConsumerInstance>;
+  "new"(meta?: Truffle.TransactionDetails): Promise<FtsoV2FeedConsumerInstance>;
 }
 
 type AllEvents = never;
 
 export interface FtsoV2FeedConsumerInstance extends Truffle.ContractInstance {
-  getCurrentPrice(txDetails?: Truffle.TransactionDetails): Promise<BN>;
+  flrUsdId(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
+  getAvailablePriceFeedNames(
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<string[]>;
+
+  getAvailablePriceFeeds(
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<string[]>;
+
+  getCurrentPrice(
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+  getFeedPrice(
+    feedId: string,
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+  getFeedPriceByName(
+    feedName: string,
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+  getFlrUsdPrice(
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<{ 0: BN; 1: BN; 2: BN }>;
 
   methods: {
-    getCurrentPrice(txDetails?: Truffle.TransactionDetails): Promise<BN>;
+    flrUsdId(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
+    getAvailablePriceFeedNames(
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string[]>;
+
+    getAvailablePriceFeeds(
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string[]>;
+
+    getCurrentPrice(
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+    getFeedPrice(
+      feedId: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+    getFeedPriceByName(
+      feedName: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<{ 0: BN; 1: BN; 2: BN }>;
+
+    getFlrUsdPrice(
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<{ 0: BN; 1: BN; 2: BN }>;
   };
 
   getPastEvents(event: string): Promise<EventData[]>;
