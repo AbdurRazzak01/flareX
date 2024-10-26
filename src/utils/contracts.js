@@ -25,14 +25,17 @@ export const getGAEHEscrowContract = async () => {
   return new Contract(GAEHEscrowAddress, GAEHEscrowABI.abi, signer);
 };
 
-export const getMockStablecoinContract = () => {
-  const provider = new BrowserProvider(window.ethereum);
-  const signer = provider.getSigner();
+export const getMockStablecoinContract = async () => {
+  const provider = getProvider(); // Reuse the getProvider function
+  const signer = await provider.getSigner(); // Await the signer to resolve the Promise
+
   if (!MockStablecoinAddress) {
     throw new Error("Stablecoin contract address is missing.");
   }
+
   return new Contract(MockStablecoinAddress, MockStablecoinABI.abi, signer); // Use the stablecoin ABI here
 };
+
 
 /*
 export const getFtsoV2FeedConsumerContract = async () => {

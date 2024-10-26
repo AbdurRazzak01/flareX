@@ -1,16 +1,394 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/mdabdurrazzak/flareX/smart_contracts/contracts/FtsoV2FeedConsumer.sol": {
-      "lastModificationDate": 1729889936935,
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/contracts/FtsoV2FeedConsumer.sol": {
+      "lastModificationDate": 1729952066798,
       "contentHash": "afde6a79938b855377eafb81b9bfbe86",
       "sourceName": "contracts/FtsoV2FeedConsumer.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.8.0 <0.9.0"
+      ],
+      "artifacts": [
+        "FtsoV2FeedConsumer",
+        "FtsoV2Interface"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/contracts/GAEHEscrow.sol": {
+      "lastModificationDate": 1729952066799,
+      "contentHash": "d113bbb913fe2428dece39b4aef07d21",
+      "sourceName": "contracts/GAEHEscrow.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "GAEHEscrow",
+        "IInsuranceOracle"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1729952169580,
+      "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1729952169437,
+      "contentHash": "8f19f64d2adadf448840908bbaf431c8",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1729952168924,
+      "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1729952169445,
+      "contentHash": "794db3115001aa372c79326fcfd44b1f",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20Metadata"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1729952169108,
+      "contentHash": "38910c3dfa5e3778fac8888b1d714084",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol",
+        "./extensions/IERC20Metadata.sol",
+        "../../utils/Context.sol",
+        "../../interfaces/draft-IERC6093.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+      "lastModificationDate": 1729952168976,
+      "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
+      "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC1155Errors",
+        "IERC20Errors",
+        "IERC721Errors"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/contracts/MockStablecoin.sol": {
+      "lastModificationDate": 1729952067160,
+      "contentHash": "940c2bfe383def2948615a2d99ffe24f",
+      "sourceName": "contracts/MockStablecoin.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "MockStablecoin"
+      ]
+    },
+    "/Users/mdabdurrazzak/Documents/flare-hardhat-starter/contracts/MockInsuranceOracle.sol": {
+      "lastModificationDate": 1729952067159,
+      "contentHash": "78037fbc0b0c0429bf67ba290d11a020",
+      "sourceName": "contracts/MockInsuranceOracle.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "MockInsuranceOracle"
+      ]
+    },
+    "/Users/mdabdurrazzak/flareX/smart_contracts/contracts/FtsoV2FeedConsumer.sol": {
+      "lastModificationDate": 1729952472634,
+      "contentHash": "afde6a79938b855377eafb81b9bfbe86",
+      "sourceName": "contracts/FtsoV2FeedConsumer.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "london",
+          "optimizer": {
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -39,15 +417,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/contracts/GAEHEscrow.sol": {
-      "lastModificationDate": 1729888947385,
+      "lastModificationDate": 1729952472632,
       "contentHash": "d113bbb913fe2428dece39b4aef07d21",
       "sourceName": "contracts/GAEHEscrow.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -79,15 +457,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1729888627197,
+      "lastModificationDate": 1729952543956,
       "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -117,15 +495,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1729888627165,
+      "lastModificationDate": 1729952543829,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -153,15 +531,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1729888627092,
+      "lastModificationDate": 1729952544054,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -189,15 +567,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1729888627166,
+      "lastModificationDate": 1729952543845,
       "contentHash": "794db3115001aa372c79326fcfd44b1f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -227,15 +605,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1729888627118,
+      "lastModificationDate": 1729952543831,
       "contentHash": "38910c3dfa5e3778fac8888b1d714084",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -268,15 +646,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1729888627096,
+      "lastModificationDate": 1729952544534,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -306,15 +684,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/contracts/MockStablecoin.sol": {
-      "lastModificationDate": 1729889218194,
-      "contentHash": "91ed991dcb8f16d406c2bfcd9598d21a",
+      "lastModificationDate": 1729952472637,
+      "contentHash": "940c2bfe383def2948615a2d99ffe24f",
       "sourceName": "contracts/MockStablecoin.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -344,15 +722,15 @@
       ]
     },
     "/Users/mdabdurrazzak/flareX/smart_contracts/contracts/MockInsuranceOracle.sol": {
-      "lastModificationDate": 1729889235818,
+      "lastModificationDate": 1729952472636,
       "contentHash": "78037fbc0b0c0429bf67ba290d11a020",
       "sourceName": "contracts/MockInsuranceOracle.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
+          "evmVersion": "london",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {

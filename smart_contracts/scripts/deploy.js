@@ -1,7 +1,8 @@
-const { ethers } = require("hardhat");
+const { ethers, run } = require("hardhat");
+
 
 async function main() {
-  const stablecoinAddress = "0xaAcB12F1Ac0baD56D77c2cfDa0Cf03BeabF0B1BC";
+  const stablecoinAddress = "0x8aa8b6b6D972Ade7F862Ffc9DD55ed7C212705CA";
   const insuranceOracleAddress = "0x884aF8A58E156EC4Aa19929E921AF0Fa8c1218bB";
 
   const ContractFactory = await ethers.getContractFactory("GAEHEscrow");
@@ -9,6 +10,18 @@ async function main() {
 
   await contract.waitForDeployment();
   console.log("GAEHEscrow deployed to:", await contract.getAddress());
+
+  try {
+    const result = await run("verify:verify", {
+        address: await contract.getAddress(),
+        constructorArguments: [stablecoinAddress, insuranceOracleAddress],
+    })
+
+    console.log(result)
+  } catch (e) {
+      console.log(e.message)
+  }
+
 }
 
 main().catch((error) => {

@@ -8,7 +8,7 @@ const EscrowManager = ({ account }) => {
   const [escrowDetails, setEscrowDetails] = useState(null);
 
   // Hardcoded seller address
-  const hardcodedSellerAddress = "0x07F8e2824850048d9360f09BcE75E5A1e2501d66"; // replace with actual seller address
+  const hardcodedSellerAddress = "0x3016DBeE1F9580638E2691546e8D2df1535B03be"; // replace with actual seller address
 
   useEffect(() => {
     const connectWallet = async () => {
@@ -20,8 +20,10 @@ const EscrowManager = ({ account }) => {
 
   const approveStablecoin = async () => {
     if (!amount) return alert("Please enter a valid amount.");
-
-    const stablecoinContract = getMockStablecoinContract(); // Assume this returns the stablecoin contract
+    
+    const stablecoinContract = await getMockStablecoinContract();
+    console.log("Stablecoin Contract Methods:", stablecoinContract.functions); // Debugging output
+  
     try {
       const tx = await stablecoinContract.approve(
         process.env.REACT_APP_CONTRACT_ADDRESS,
@@ -34,14 +36,16 @@ const EscrowManager = ({ account }) => {
       alert("Stablecoin approval failed. Please try again.");
     }
   };
+  
 
   const createEscrow = async () => {
     if (!amount) return alert("Please enter a valid amount.");
     if (!isAddress(hardcodedSellerAddress)) return alert("Invalid hardcoded seller address.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
+    console.log("Available contract functions:", contract.functions); // Log contract functions
+  
     try {
-      // Using the hardcoded seller address
       const tx = await contract.createEscrow(hardcodedSellerAddress, parseEther(amount), { from: account });
       await tx.wait();
       alert("Escrow Created Successfully!");
@@ -50,13 +54,14 @@ const EscrowManager = ({ account }) => {
       alert("Escrow creation failed. Please try again.");
     }
   };
-
+  
   const adjustPrice = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
     try {
-      const tx = await contract.adjustPrice(escrowId);
+      // Convert escrowId to a number if it's stored as a string
+      const tx = await contract.adjustPrice(parseInt(escrowId));
       await tx.wait();
       alert("Price Adjusted Successfully!");
     } catch (error) {
@@ -64,27 +69,37 @@ const EscrowManager = ({ account }) => {
       alert("Price adjustment failed. Please try again.");
     }
   };
+  
 
   const finalizeEscrow = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
     try {
-      const tx = await contract.finalizeEscrow(escrowId);
+      // Fetch escrow details to check insurance status
+      const details = await contract.escrows(parseInt(escrowId));
+      if (!details.insuranceVerified) {  // Adjust the field name if needed
+        alert("Insurance must be verified before finalizing the escrow.");
+        return;
+      }
+  
+      const tx = await contract.finalizeEscrow(parseInt(escrowId));
       await tx.wait();
       alert("Escrow Finalized Successfully!");
     } catch (error) {
       console.error("Error finalizing escrow:", error);
-      alert("Escrow finalization failed. Please try again.");
+      alert(`Escrow finalization failed: ${error.reason || "Unknown error"}`);
     }
   };
+  
 
   const cancelEscrow = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
     try {
-      const tx = await contract.cancelEscrow(escrowId);
+      // Convert escrowId to a number if it's stored as a string
+      const tx = await contract.cancelEscrow(parseInt(escrowId));
       await tx.wait();
       alert("Escrow Canceled Successfully!");
     } catch (error) {
@@ -92,27 +107,38 @@ const EscrowManager = ({ account }) => {
       alert("Escrow cancellation failed. Please try again.");
     }
   };
+  
 
   const verifyInsurance = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
     try {
-      const tx = await contract.verifyInsurance(escrowId);
+      // Ensure that the escrow is adjusted before calling verifyInsurance
+      const details = await contract.escrows(parseInt(escrowId));
+      if (details.status !== "ADJUSTED") {
+        alert("Escrow must be adjusted before verifying insurance.");
+        return;
+      }
+  
+      const tx = await contract.verifyInsurance(parseInt(escrowId));
       await tx.wait();
       alert("Insurance Verified Successfully!");
     } catch (error) {
       console.error("Error verifying insurance:", error);
-      alert("Insurance verification failed. Please try again.");
+      alert(`Insurance verification failed: ${error.reason || "Unknown error"}`);
     }
   };
+  
+  
 
   const fetchEscrowDetails = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
-
-    const contract = getGAEHEscrowContract();
+  
+    const contract = await getGAEHEscrowContract();
     try {
-      const details = await contract.escrows(escrowId);
+      // Convert escrowId to a number if it's stored as a string
+      const details = await contract.escrows(parseInt(escrowId));
       setEscrowDetails(details);
       alert("Escrow details fetched successfully!");
     } catch (error) {
@@ -120,6 +146,7 @@ const EscrowManager = ({ account }) => {
       alert("Failed to fetch escrow details.");
     }
   };
+  
 
   return (
     <div>
