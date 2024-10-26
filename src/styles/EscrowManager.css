@@ -1,0 +1,42 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  button {
+    background: linear-gradient(90deg, #8c52ff, #5ce16b);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    margin: 5px;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, #5ce16b, #8c52ff);
+  }
+  
+  input {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    width: calc(100% - 22px);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #8c52ff;
+  }
+  
+  .escrow-details {
+    margin-top: 1rem;
+    background: #f5f7fa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }

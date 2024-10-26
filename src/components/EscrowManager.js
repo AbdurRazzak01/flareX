@@ -71,6 +71,30 @@ const EscrowManager = ({ account }) => {
   };
   
 
+  /*
+  const adjustPrice = async () => {
+  if (!escrowId) return alert("Please enter the escrow ID.");
+  
+  const contract = await getGAEHEscrowContract();
+  try {
+    const tx = await contract.adjustPrice(parseInt(escrowId));
+    await tx.wait();
+    
+    // Fetch escrow details again to show the new adjusted price
+    const details = await contract.escrows(parseInt(escrowId));
+    setEscrowDetails({
+      ...details,
+      adjustedPrice: formatUnits(details.adjustedPrice, "wei") // Adjust the formatting as needed
+    });
+    
+    alert(`Price Adjusted Successfully! New Price: ${details.adjustedPrice} USD`);
+  } catch (error) {
+    console.error("Error adjusting price:", error);
+    alert("Price adjustment failed. Please try again.");
+  }
+};
+
+  */
   const finalizeEscrow = async () => {
     if (!escrowId) return alert("Please enter the escrow ID.");
   
@@ -146,8 +170,19 @@ const EscrowManager = ({ account }) => {
       alert("Failed to fetch escrow details.");
     }
   };
+  /*
+  {escrowDetails && (
+    <div>
+      <h3>Escrow Details:</h3>
+      <p><strong>Buyer:</strong> {escrowDetails.buyer}</p>
+      <p><strong>Seller:</strong> {escrowDetails.seller}</p>
+      <p><strong>Amount:</strong> {formatUnits(escrowDetails.amount, "ether")} ETH</p>
+      <p><strong>Adjusted Price (USD):</strong> {escrowDetails.adjustedPrice || "Not adjusted yet"}</p>
+      <p><strong>Status:</strong> {escrowDetails.status}</p>
+      <p><strong>Last Price Update:</strong> {escrowDetails.lastPriceUpdate}</p>
+    </div>
+  )}*/
   
-
   return (
     <div>
       <h2>Manage Your Escrows</h2>
@@ -185,6 +220,8 @@ const EscrowManager = ({ account }) => {
           <p><strong>Last Price Update:</strong> {escrowDetails.lastPriceUpdate}</p>
         </div>
       )}
+
+      
     </div>
   );
 };

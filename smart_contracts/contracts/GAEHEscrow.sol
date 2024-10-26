@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./FtsoV2FeedConsumer.sol";
 
 interface IInsuranceOracle {
     function verifyInsurance(uint256 escrowId) external returns (bool);
@@ -25,7 +26,7 @@ contract GAEHEscrow is Ownable {
     uint256 public escrowCounter;
 
     event EscrowCreated(uint256 indexed escrowId, address indexed buyer, address indexed seller, uint256 amount);
-    event PriceAdjusted(uint256 indexed escrowId);
+    event PriceAdjusted(uint256 indexed escrowId,uint256 adjustedPrice);//***to adjust onchain price
     event InsuranceVerified(uint256 indexed escrowId, bool verified);
     event EscrowFinalized(uint256 indexed escrowId, uint256 finalAmountPaid);
     event EscrowCancelled(uint256 indexed escrowId);
@@ -43,6 +44,7 @@ contract GAEHEscrow is Ownable {
             amount: amount,
             status: EscrowStatus.Initialized,
             lastPriceUpdate: block.timestamp
+            adjustedPrice: 0 //adjust price change
         });
 
         require(stablecoin.transferFrom(msg.sender, address(this), amount), "Payment failed");
@@ -54,6 +56,8 @@ contract GAEHEscrow is Ownable {
     function adjustPrice(uint256 escrowId) external onlyOwner {
         require(escrows[escrowId].status == EscrowStatus.Initialized, "Invalid status for adjustment");
 
+      uint256 currentPrice = ftsoFeedConsumer.getCurrentPrice(); // Fetch current USD price
+        escrows[escrowId].adjustedPrice = currentPrice;
         escrows[escrowId].status = EscrowStatus.PriceAdjusted;
         escrows[escrowId].lastPriceUpdate = block.timestamp;
 
