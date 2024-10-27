@@ -11,6 +11,7 @@ const EscrowManager = ({ account }) => {
   const [escrowDetails, setEscrowDetails] = useState(null);
   const [priceData, setPriceData] = useState({ adjustedPrice: null, timestamp: null });
   const [role, setRole] = useState("buyer"); // "buyer" or "seller" role toggle
+  const [isHovered, setIsHovered] = useState(false);
 
   // Hardcoded seller address
   const hardcodedSellerAddress = "0x3016DBeE1F9580638E2691546e8D2df1535B03be"; // replace with actual seller address
@@ -178,6 +179,8 @@ const EscrowManager = ({ account }) => {
       alert("Failed to fetch escrow details.");
     }
   };
+
+  
   const imageStyle = {
     width: '100%',
     maxWidth: '150px', // Limit the size of the image
@@ -295,8 +298,8 @@ const EscrowManager = ({ account }) => {
           {/* Buttons based on Buyer or Seller Role */}
           {role === "buyer" && (
             <>
-              <button style={buttonStyle} onClick={fetchEscrowDetails}>Fetch Escrow Details</button>
-              <button style={buttonStyle} onClick={adjustPrice}>Adjust Price</button>
+              <button style={buttonStyle} onClick={fetchEscrowDetails}>Fetch To See Details</button>
+              <button style={buttonStyle} onClick={adjustPrice}>Adjust Your Price</button>
 
               <button style={buttonStyle} onClick={cancelEscrow}>Cancel Escrow</button>
               {/*<button style={buttonStyle} onClick={finalizeEscrow}>Finalize Escrow</button>*/}
@@ -306,8 +309,8 @@ const EscrowManager = ({ account }) => {
           
           {role === "seller" && (
             <>
-              <button style={buttonStyle} onClick={fetchEscrowDetails}>Fetch Escrow Details</button>
-              <button style={buttonStyle} onClick={adjustPrice}>Adjust Price</button>
+              <button style={buttonStyle} onClick={fetchEscrowDetails}>Fetch To See Details</button>
+              <button style={buttonStyle} onClick={adjustPrice}>Adjust Your Price</button>
             </>
             
           )}

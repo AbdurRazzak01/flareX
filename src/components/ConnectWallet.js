@@ -17,7 +17,8 @@ const ConnectWallet = ({ setAccount }) => {
   return (
     <div>
       <h2>Welcome to FlareX</h2>
-      <p>Connect your wallet to get started.</p>
+      <p>Real-Time Price Adjusting Escrow,</p>
+<p>Uniquely Powered by Trust and Data Bridging on Flare!</p>
       <button 
         onClick={connectWallet} 
         style={{

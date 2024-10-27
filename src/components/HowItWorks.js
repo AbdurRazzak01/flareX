@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./../styles/HowItWorks.css"; // or the appropriate path to the CSS file
 
 // Define steps array
-const steps = [
-  "Buyer and seller agree on terms",
-  "Buyer completes payment",
-  "Escrow manages transaction",
-  "Seller fulfills requirements",
-];
+    const steps = [
+        "Ensures fair, real-time price adjustments.",
+        "Seamless, trustless escrow management.",
+        "Transparent data bridging with on-chain proof.",
+        "Decentralized for high-value asset security."
+    ];
+    
 
 const HowItWorks = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -21,7 +22,7 @@ const HowItWorks = () => {
 
   return (
     <div className="how-it-works">
-      <h2>How It Works</h2>
+      <h2>Why is It The Best?</h2>
       <div className="steps">
         <div className="vertical-line"></div> {/* Vertical line connecting nodes */}
         {steps.map((step, index) => (
