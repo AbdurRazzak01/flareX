@@ -1,0 +1,97 @@
+import React, { useState } from "react";
+import axios from "axios";
+import { useDropzone } from "react-dropzone";
+import Tesseract from "tesseract.js";
+
+const OPENAI_API_KEY = "Please Write your API here, the file wasn't allowed to upload as it had secret code of OpenAI";
+
+const Ai = () => {
+  const [receiptFile, setReceiptFile] = useState(null);
+  const [validationResult, setValidationResult] = useState("");
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => setReceiptFile(acceptedFiles[0]),
+  });
+
+  const handleFileUpload = async () => {
+    if (!receiptFile) {
+      alert("Please upload a receipt file.");
+      return;
+    }
+
+    try {
+      const { data: { text } } = await Tesseract.recognize(receiptFile, "eng", {
+        logger: (info) => console.log(info)
+      });
+
+      const extractedData = extractShipmentInfo(text);
+
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: "You are an assistant that validates shipment receipts based on shipment date, shipment number, and destination address." },
+            { role: "user", content: `Validate the following shipment receipt details: ${JSON.stringify(extractedData)}` },
+          ],
+          max_tokens: 60,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${OPENAI_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const result = response.data.choices[0].message.content.trim();
+      const isValid = result.includes("validated");
+
+      setValidationResult(isValid ? `Receipt validated and accepted. Shipment ID: ${extractedData.shipmentNumber}` : "Receipt not valid.");
+    } catch (error) {
+      console.error("Error during receipt validation:", error);
+      console.error("Error details:", error.response ? error.response.data : error.message);
+      setValidationResult("Failed to validate receipt. Please try again.");
+    }
+  };
+
+  const extractShipmentInfo = (text) => {
+    const lines = text.split("\n");
+    let shipmentNumber = "";
+    let shipmentDate = "";
+    let destination = "";
+
+    lines.forEach(line => {
+      if (line.toLowerCase().includes("shipment number")) shipmentNumber = line.split(":")[1].trim();
+      if (line.toLowerCase().includes("shipment date")) shipmentDate = line.split(":")[1].trim();
+      if (line.toLowerCase().includes("destination")) destination = line.split(":")[1].trim();
+    });
+
+    return {
+      shipmentNumber,
+      shipmentDate,
+      destination,
+    };
+  };
+
+  return (
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h3>Upload and Validate Shipment Receipt</h3>
+      <div {...getRootProps({ className: "dropzone" })} style={{ border: "2px dashed #8c52ff", padding: "20px", borderRadius: "10px" }}>
+        <input {...getInputProps()} />
+        {receiptFile ? <p>{receiptFile.name}</p> : <p>Drag and drop your receipt image here, or click to select a file</p>}
+      </div>
+      <button onClick={handleFileUpload} style={{ marginTop: "15px", backgroundColor: "#8c52ff", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+        Validate Receipt
+      </button>
+      {validationResult && (
+        <div style={{ marginTop: "15px", color: validationResult.includes("validated") ? "green" : "red" }}>
+          <p>{validationResult}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Ai;
