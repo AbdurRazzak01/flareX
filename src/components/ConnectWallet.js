@@ -16,9 +16,26 @@ const ConnectWallet = ({ setAccount }) => {
 
   return (
     <div>
-      <h2>Welcome to Flare</h2>
+      <h2>Welcome to FlareX</h2>
       <p>Connect your wallet to get started.</p>
-      <button onClick={connectWallet}>Connect Wallet</button>
+      <button 
+        onClick={connectWallet} 
+        style={{
+          display: 'inline-block',
+          marginLeft: '100px', // Align to the left with padding
+          padding: '10px 10px', // Smaller padding for a smaller button
+          fontSize: '1.5rem', // Smaller font size
+          color: '#ffffff',
+          background: 'linear-gradient(90deg, #5ce16b, #8c52ff)',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s ease'
+        }}
+      >
+        Connect Wallet
+      </button>
+      <img src="/image.png" alt="Decorative Image" className="decorative-image" />
     </div>
   );
 };

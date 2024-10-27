@@ -1,48 +1,186 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* App.css */
+
+body, html {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
+  padding: 0;
+  background: #f0f2f5;
 }
 
 .App {
   text-align: center;
+  padding: 0 10px;
+}
+
+.header, .footer {
+  background-color: #8c52ff;
+  color: white;
+  padding: 20px;
+}
+
+.navbar h1, .navbar nav a {
+  display: inline;
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.hero-section {
+  padding: 50px;
+  background: linear-gradient(90deg, #5ce16b, #8c52ff);
+  color: #fff;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: white;
+  color: #8c52ff;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.how-it-works, .receipt-upload {
+  padding: 40px 20px;
   background-color: #ffffff;
-  padding: 5px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  max-width: 1200px;
-  width: 100%;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 500px;
 }
 
-h1 {
-  color: #ff6600;
-  font-size: 2rem;
+.how-it-works h3, .receipt-upload h3 {
+  color: #333;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
-button {
-  background-color: #ff6600;
+.steps .step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.steps .step.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background: #8c52ff;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.upload-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #8c52ff;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #e55b00;
-}
-
-input {
-  padding: 0.5rem;
-  margin: 0.5rem 0;
   font-size: 1rem;
-  width: calc(100%);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #666;
+  background: #333;
+}
+
+.footer p {
+  color: white;
+  margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+  .header, .footer {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .navbar h1, .navbar nav a {
+    font-size: 1rem;
+    margin: 0 10px;
+  }
+
+  .hero-section {
+    padding: 30px;
+    font-size: 1rem;
+  }
+
+  .how-it-works, .receipt-upload {
+    padding: 20px;
+    max-width: 90%; /* Adjust width for smaller screens */
+  }
+
+  .cta-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .steps .step {
+    font-size: 0.9rem;
+  }
+
+  .upload-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header, .footer {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .navbar h1, .navbar nav a {
+    font-size: 0.9rem;
+    margin: 0 8px;
+  }
+
+  .hero-section {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+
+  .how-it-works h3, .receipt-upload h3 {
+    font-size: 1.2rem;
+  }
+
+  .how-it-works, .receipt-upload {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .cta-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    margin-top: 15px;
+  }
+
+  .steps .step {
+    font-size: 0.8rem;
+  }
+
+  .upload-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
 }

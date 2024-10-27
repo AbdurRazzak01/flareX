@@ -1,0 +1,51 @@
+/* InfoBox.css */
+
+.info-box-container {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column; /* Stacks boxes vertically */
+  }
+  
+  .info-box {
+    width: 180px;
+    background: linear-gradient(90deg, #8c52ff, #5ce16b);
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .info-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(140, 82, 255, 0.5), 0px 0px 20px rgba(92, 225, 107, 0.4);
+  }
+  
+  .info-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .statistics ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+  
+  .statistics li {
+    margin: 5px 0;
+  }
+  
+  .support p {
+    margin: 8px 0;
+    font-size: 1rem;
+  }

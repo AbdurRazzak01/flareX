@@ -34,7 +34,6 @@ const Ai = () => {
     const lines = text.split("\n");
     let invoiceNumber = "";
 
-    // First, try to find a line containing 'invoice number' or 'shipment number'
     for (let line of lines) {
       if (line.toLowerCase().includes("invoice number") || line.toLowerCase().includes("shipment number")) {
         invoiceNumber = line.split(":")[1]?.trim() || "";
@@ -42,9 +41,8 @@ const Ai = () => {
       }
     }
 
-    // If not found, extract any number as a fallback
     if (!invoiceNumber) {
-      const match = text.match(/\d+/); // Find any number in the text
+      const match = text.match(/\d+/);
       invoiceNumber = match ? match[0] : "No number found";
     }
 
@@ -52,17 +50,17 @@ const Ai = () => {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h3>Upload Shipment Receipt</h3>
-      <div {...getRootProps({ className: "dropzone" })} style={{ border: "2px dashed #8c52ff", padding: "20px", borderRadius: "10px" }}>
+    <div style={{ padding: "10px", textAlign: "center", fontSize: "0.9rem" }}>
+      <h3 style={{ fontSize: "1.2rem", marginBottom: "10px" }}>Upload Shipment Receipt</h3>
+      <div {...getRootProps({ className: "dropzone" })} style={{ border: "1px dashed #8c52ff", padding: "15px", borderRadius: "8px", fontSize: "0.8rem", maxWidth: "800px", margin: "0 auto" }}>
         <input {...getInputProps()} />
-        {receiptFile ? <p>{receiptFile.name}</p> : <p>Drag and drop your receipt image here, or click to select a file</p>}
+        {receiptFile ? <p3>{receiptFile.name}</p3> : <p2>Drag and drop your receipt image here, or click to select a file</p2>}
       </div>
-      <button onClick={handleFileUpload} style={{ marginTop: "15px", backgroundColor: "#8c52ff", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+      <button onClick={handleFileUpload} style={{ marginTop: "0px", backgroundColor: "#8c52ff", color: "#fff", padding: "8px 16px", border: "none", borderRadius: "5px", cursor: "pointer", fontSize: "0.8rem" }}>
         Retrieve Invoice Number
       </button>
       {invoiceNumber && (
-        <div style={{ marginTop: "15px", color: "green" }}>
+        <div style={{ marginTop: "0px", color: "green", fontSize: "0.85rem" }}>
           <p>{`Invoice Number: ${invoiceNumber}`}</p>
         </div>
       )}

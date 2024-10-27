@@ -1,0 +1,17 @@
+.info-section {
+    background: #333;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .info-item {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    animation: fadeIn 1s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fadeIn {
+    from { transform: scale(0.9); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+  }

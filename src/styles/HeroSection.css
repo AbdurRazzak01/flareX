@@ -1,0 +1,39 @@
+/* HeroSection.css */
+.hero-section {
+    text-align: center;
+    background: linear-gradient(90deg, #5ce16b, #8c52ff);
+    color: #ffffff;
+    padding: 80px 20px;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background-color: #ffffff;
+    color: #8c52ff;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #dcdcdc;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }

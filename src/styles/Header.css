@@ -1,19 +1,33 @@
-.header {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 1.5rem 0;
-  }
-  
-  .header h1 {
-    font-size: 2.5rem;
-    color: #8c52ff;
-    margin-bottom: 0.5rem;
-  }
-  
-  .header p {
-    font-size: 1.2rem;
-    color: #666;
-  }
+.welcome-section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  color: #d68080;
+}
+
+.connect-wallet-btn {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #8c52ff, #5ce16b);
+  color: #fff;
+  transition: transform 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+.connect-wallet-btn:hover {
+  background: linear-gradient(90deg, #5ce16b, #8c52ff);
+  transform: translateY(-3px);
+}

@@ -1,8 +1,27 @@
 .footer {
     text-align: center;
     padding: 1rem;
-    background-color: #f4f6f8;
-    color: #666;
-    font-size: 0.9rem;
+    background: linear-gradient(90deg, #4e3b64, #6d5792, #5a477b, #3c2a51); /* Enhanced gradient */
+    color: white; /* Set font color to white */
+    font-size: 0.75rem; /* Smaller font size */
     border-top: 1px solid #ddd;
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Ensures it stays on top if other elements overlap */
   }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding-bottom: 50px; /* Space for the fixed footer */
+  }
+  
+  .App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
